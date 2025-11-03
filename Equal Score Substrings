@@ -1,0 +1,17 @@
+class Solution {
+public:
+    bool scoreBalance(string s) {
+        int total = 0;
+        for (auto a : s) {
+            total += a - 'a' + 1;
+        }
+        int lsum;
+        for (auto a : s) {
+            lsum += a - 'a' + 1;
+            int rsum = total - lsum;
+            if (rsum == lsum)
+                return true;
+        }
+        return false;
+    }
+};
