@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int sumDivisibleByK(vector<int>& nums, int k) {
+        unordered_map<int, int> umap;
+        for (int num : nums) {
+            umap[num]++;
+        }
+        int sum = 0;
+        for (auto& a : umap) {
+            int f = a.first;
+            int s = a.second;
+            if (s % k == 0) {
+                sum += s * f;
+            }
+        }
+        return sum;
+    }
+};
