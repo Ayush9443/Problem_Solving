@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int smallestAbsent(vector<int>& nums) {
+        int n = nums.size();
+        int sum = 0;
+        for (int num : nums) {
+            sum += num;
+        }
+        int avg = sum / n;
+        int ans;
+        for (int i = 1; i <= 100; i++) {
+            if (i > avg && nums.end() == find(nums.begin(), nums.end(), i)) {
+                ans = i;
+                break;
+            }
+        }
+        return ans;
+    }
+};
