@@ -1,0 +1,14 @@
+class Solution {
+public:
+    long long removeZeros(long long n) {
+        string st = to_string(n);
+        string ne = "";
+        for (auto a : st) {
+            if (a != '0') {
+                ne += a;
+            }
+        }
+        n = stoll(ne);
+        return n;
+    }
+};
