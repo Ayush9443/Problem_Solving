@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int mostFrequentEven(vector<int>& nums) {
+        unordered_map<int, int> umap;
+        for (int i : nums) {
+            if (i % 2 == 0)
+                umap[i]++;
+        }
+        int num = -1, cnt = 0;
+        for (auto& a : umap) {
+            int n = a.first;
+            int c = a.second;
+            if (c > cnt || (c == cnt && n < num)) {
+                cnt = c;
+                num = n;
+            }
+        }
+        return num;
+    }
+};
