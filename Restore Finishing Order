@@ -1,0 +1,12 @@
+class Solution {
+public:
+    vector<int> recoverOrder(vector<int>& order, vector<int>& friends) {
+        vector<int>finish;
+        for(int o:order){
+            if(friends.end()!=find(friends.begin(),friends.end(),o)){
+                finish.push_back(o);
+            }
+        }
+        return finish;
+    }
+};
