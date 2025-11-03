@@ -1,0 +1,17 @@
+class Solution {
+public:
+    vector<int> maxKDistinct(vector<int>& nums, int k) {
+        set<int, greater<int>> st;
+        for (int num : nums) {
+            st.insert(num);
+        }
+        vector<int> ans;
+        for (int s : st) {
+            if (k == 0)
+                break;
+            ans.push_back(s);
+            k--;
+        }
+        return ans;
+    }
+};
