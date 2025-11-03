@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int getLeastFrequentDigit(int n) {
+        unordered_map<int, int> ump;
+        while (n) {
+            int res = n % 10;
+            n /= 10;
+            ump[res]++;
+        }
+        int cnt = INT_MAX;
+        int num = INT_MAX;
+        for (auto& p : ump) {
+            int a = p.first;
+            int b = p.second;
+            if (cnt > b || (cnt == b && num > a)) {
+                num = a;
+                cnt = b;
+            }
+        }
+        return num;
+    }
+};
