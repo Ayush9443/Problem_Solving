@@ -1,0 +1,31 @@
+class Solution {
+public:
+    vector<int> findXSum(vector<int>& nums, int k, int x) {
+        int n = nums.size();
+        vector<int> xsum;
+        for (int i = 0; i < n - k + 1; i++) {
+            unordered_map<int, int> ump;
+            for (int j = i; j < k + i; j++) {
+                ump[nums[j]]++;
+            }
+            vector<pair<int, int>> vec(ump.begin(), ump.end());
+            sort(vec.begin(), vec.end(), [](auto& a, auto& b) {
+                if (a.second == b.second)
+                    return a.first > b.first;
+                return a.second > b.second;
+            });
+            int sum = 0;
+            int cnt = 0;
+            for (auto& v : vec) {
+                int a = v.first;
+                int b = v.second;
+                sum += a * b;
+                cnt++;
+                if (cnt == x)
+                    break;
+            }
+            xsum.push_back(sum);
+        }
+        return xsum;
+    }
+};
