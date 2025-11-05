@@ -1,0 +1,25 @@
+class Solution {
+public:
+    bool num(int n){
+        vector<int>d(10,0);
+        while(n){
+            d[n%10]++;
+            n/=10;
+        }
+        if(d[0]>0)return false;
+        for(int i=1;i<=9;i++){
+            if(d[i]!=0 && d[i]!=i)return false;
+        }
+        return true;
+    }
+    int nextBeautifulNumber(int n) {
+        int ans;
+        for(int i=n+1;i<=INT_MAX;i++){
+            if(num(i)){
+                ans=i;
+                break;
+            }
+        }
+        return ans; 
+    }
+};
