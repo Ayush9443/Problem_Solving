@@ -1,0 +1,16 @@
+class Solution {
+public:
+    vector<int> decimalRepresentation(int n) {
+        vector<int> num;
+        long long p = 1;
+        while (n) {
+            int res = n % 10;
+            if (res != 0)
+                num.push_back(res * p);
+            p *= 10;
+            n /= 10;
+        }
+        reverse(num.begin(), num.end());
+        return num;
+    }
+};
