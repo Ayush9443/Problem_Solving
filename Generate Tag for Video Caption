@@ -1,0 +1,27 @@
+class Solution {
+public:
+    string generateTag(string caption) {
+        int n = caption.size();
+        string str = "#";
+        int i = 0;
+        while (i < n && caption[i] == ' ')
+            i++;
+        if (i == n)
+            return "#";
+        str += tolower(caption[i]);
+        i++;
+        while (i < n && str.size() < 100) {
+            if (caption[i] == ' ') {
+                i++;
+                while (i < n && caption[i] == ' ')
+                    i++;
+                if (i < n)
+                    str += toupper(caption[i]);
+            } else {
+                str += tolower(caption[i]);
+            }
+            i++;
+        }
+        return str;
+    }
+};
