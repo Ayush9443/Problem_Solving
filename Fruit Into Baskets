@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int totalFruit(vector<int>& fruits) {
+        int i{0}, j{0}, maxi{0};
+        unordered_map<int, int> ump;
+        for (int f : fruits) {
+            ump[f]++;
+            while (ump.size() > 2) {
+                ump[fruits[j]]--;
+                if (ump[fruits[j]] == 0) {
+                    ump.erase(fruits[j]);
+                }
+                j++;
+            }
+            maxi = max(maxi, i - j + 1);
+            i++;
+        }
+        return max(maxi, i - j);
+    }
+};
