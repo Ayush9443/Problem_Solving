@@ -1,0 +1,13 @@
+class Solution {
+public:
+    vector<int> sortByBits(vector<int>& arr) {
+        sort(arr.begin(), arr.end(), [](auto& a, auto& b) {
+            int as=__builtin_popcount(a);
+            int bs=__builtin_popcount(b);
+            if (as == bs)
+                return a < b;
+            return as < bs;
+        });
+        return arr;
+    }
+};
