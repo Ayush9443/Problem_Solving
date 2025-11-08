@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int secondHighest(string s) {
+        int lar = -1;
+        int slar = -1;
+        for (auto a : s) {
+            if (isdigit(a)) {
+                int num = a - '0';
+                if (num > lar) {
+                    slar = lar;
+                    lar = num;
+                } else if (num < lar && num > slar)
+                    slar = num;
+            }
+        }
+        return slar;
+    }
+};
