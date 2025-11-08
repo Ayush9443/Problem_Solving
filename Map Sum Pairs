@@ -1,0 +1,30 @@
+class MapSum {
+public:
+    unordered_map<string, int> ump;
+    MapSum() {}
+
+    void insert(string key, int val) { ump[key] = val; }
+
+    int sum(string prefix) {
+        int msum = 0;
+        for (auto& u : ump) {
+            string a = u.first;
+            int b = u.second;
+            int i;
+            for (i = 0; i < prefix.size() && i < a.size(); i++) {
+                if (a[i] != prefix[i])
+                    break;
+            }
+            if (i == prefix.size())
+                msum += b;
+        }
+        return msum;
+    }
+};
+
+/**
+ * Your MapSum object will be instantiated and called as such:
+ * MapSum* obj = new MapSum();
+ * obj->insert(key,val);
+ * int param_2 = obj->sum(prefix);
+ */
